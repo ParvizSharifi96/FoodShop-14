@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodshop_14.databinding.ActivityMainBinding
-import com.example.foodshop_14.databinding.DialogAddNewItemBinding
 import com.example.foodshop_14.databinding.DialogDeleteItemBinding
-import com.example.foodshop_14.databinding.DialogUpdateItemBinding
 import com.example.foodshop_14.room.Food
 import com.example.foodshop_14.room.FoodDao
 import com.example.foodshop_14.room.MyDatabase
@@ -221,9 +218,30 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
     override fun onFoodClicked(food: Food, position: Int) {  }
 
-    override fun onFoodLONGClicked(food: Food, oldPosition: Int) {}
+    override fun onFoodLONGClicked(food: Food, oldPosition: Int) {
+
+        val dialog = AlertDialog.Builder(this).create()
+        val dialogDeleteBinding = DialogDeleteItemBinding.inflate(layoutInflater)
+        dialog.setView(dialogDeleteBinding.root)
+        dialog.setCancelable(true)
+        dialog.show()
+
+        dialogDeleteBinding.dialogBtnDeleteCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialogDeleteBinding.dialogBtnDeleteSure.setOnClickListener {
+
+            dialog.dismiss()
+            myAdapter.removeFood(food, oldPosition)
+            foodDao.deleteFood(food)
+
+
+
+        }
 
 
     }
+}
 
 
