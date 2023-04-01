@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodshop_14.databinding.ActivityMainBinding
 import com.example.foodshop_14.databinding.DialogAddNewItemBinding
 import com.example.foodshop_14.databinding.DialogDeleteItemBinding
+import com.example.foodshop_14.databinding.DialogUpdateItemBinding
 import com.example.foodshop_14.room.Food
 import com.example.foodshop_14.room.FoodDao
 import com.example.foodshop_14.room.MyDatabase
-
 
 
 const val BASE_URL_IMAGE = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food"
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
         showAllData()
         binding.btnRemoveAllFood.setOnClickListener {
-           removeAllData()
+            removeAllData()
         }
 
         binding.btnAddNewFood.setOnClickListener {
@@ -50,14 +50,14 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
     }
 
 
-    private fun addNewFood(){
+    private fun addNewFood() {
 
-            val dialog = AlertDialog.Builder(this).create()
+        val dialog = AlertDialog.Builder(this).create()
 
-           val dialogBinding = DialogAddNewItemBinding.inflate(layoutInflater)
-           dialog.setView(dialogBinding.root)
-           dialog.setCancelable(true)
-           dialog.show()
+        val dialogBinding = DialogAddNewItemBinding.inflate(layoutInflater)
+        dialog.setView(dialogBinding.root)
+        dialog.setCancelable(true)
+        dialog.show()
         dialogBinding.dialogBtnDone.setOnClickListener {
 
             if (
@@ -100,13 +100,9 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
             }
 
 
-
-
-
-    }
+        }
 
     }
-
 
 
     private fun removeAllData() {
@@ -293,7 +289,62 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
     }
 
-    override fun onFoodClicked(food: Food, position: Int) {  }
+    override fun onFoodClicked(food: Food, position: Int) {
+
+        val dialog = AlertDialog.Builder(this).create()
+        val updateDialogBinding = DialogUpdateItemBinding.inflate(layoutInflater)
+        dialog.setView(updateDialogBinding.root)
+        dialog.setCancelable(true)
+        dialog.show()
+
+        updateDialogBinding.dialogEdtNameFood.setText(food.txtSubject)
+        updateDialogBinding.dialogEdtFoodCity.setText(food.txtCity)
+        updateDialogBinding.dialogEdtFoodPrice.setText(food.txtPrice)
+        updateDialogBinding.dialogEdtFoodDistance.setText(food.txtDistance)
+
+        updateDialogBinding.dialogUpdateBtnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        updateDialogBinding.dialogUpdateBtnDone.setOnClickListener {
+
+            if (
+                updateDialogBinding.dialogEdtNameFood.length() > 0 &&
+                updateDialogBinding.dialogEdtFoodCity.length() > 0 &&
+                updateDialogBinding.dialogEdtFoodPrice.length() > 0 &&
+                updateDialogBinding.dialogEdtFoodDistance.length() > 0
+            ) {
+
+                val txtName = updateDialogBinding.dialogEdtNameFood.text.toString()
+                val txtPrice = updateDialogBinding.dialogEdtFoodPrice.text.toString()
+                val txtDistance = updateDialogBinding.dialogEdtFoodDistance.text.toString()
+                val txtCity = updateDialogBinding.dialogEdtFoodCity.text.toString()
+
+                // create new food to add to recycler view
+                val newFood = Food(
+                    id = food.id,
+                    txtSubject = txtName,
+                    txtPrice = txtPrice,
+                    txtDistance = txtDistance,
+                    txtCity = txtCity,
+                    urlImage = food.urlImage,
+                    numOfRating = food.numOfRating,
+                    rating = food.rating
+                )
+
+                // update item :
+                myAdapter.updateFood(newFood, position)
+
+                foodDao.updateFood(newFood)
+
+                dialog.dismiss()
+
+            } else {
+                Toast.makeText(this, "Please enter all values", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
 
     override fun onFoodLONGClicked(food: Food, oldPosition: Int) {
 
@@ -312,7 +363,6 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
             dialog.dismiss()
             myAdapter.removeFood(food, oldPosition)
             foodDao.deleteFood(food)
-
 
 
         }
