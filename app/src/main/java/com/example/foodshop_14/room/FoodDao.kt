@@ -5,14 +5,16 @@ import androidx.room.*
 
 @Dao
 interface FoodDao {
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  fun  insertOrUpdate(food: Food)
 
-    @Insert
-  fun insertFood(food: Food)
+//    @Insert
+//  fun insertFood(food: Food)
 
   @Insert
   fun insertAllFood(data : List<Food>)
-    @Update
-    fun updateFood(food: Food)
+//    @Update
+//    fun updateFood(food: Food)
 
     @Delete
     fun deleteFood(food: Food)

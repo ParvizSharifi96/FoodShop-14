@@ -3,8 +3,10 @@ package com.example.foodshop_14
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodshop_14.databinding.ActivityMainBinding
@@ -45,6 +47,32 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
         binding.btnAddNewFood.setOnClickListener {
 
             addNewFood()
+        }
+        binding.edtSearch.addTextChangedListener {editTextInput ->
+
+            searchOnDatabase(editTextInput.toString())
+
+        }
+
+
+    }
+
+
+    private fun searchOnDatabase(editTextInput : String) {
+
+        if (editTextInput!!.isNotEmpty()) {
+
+            // filter data   'h'
+            val searchData = foodDao.searchFood(editTextInput)
+            myAdapter.setData(ArrayList(searchData))
+
+
+        } else {
+
+            // show all data :
+            val data = foodDao.getAllFood()
+            myAdapter.setData(ArrayList(data))
+
         }
 
     }
@@ -87,7 +115,7 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                     rating = ratingBarStar
                 )
                 myAdapter.addFood(newFood)
-                foodDao.insertFood(newFood)
+                foodDao.insertOrUpdate(newFood)
 
                 dialog.dismiss()
                 binding.recyclerMain.scrollToPosition(0)
@@ -335,7 +363,7 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                 // update item :
                 myAdapter.updateFood(newFood, position)
 
-                foodDao.updateFood(newFood)
+                foodDao.insertOrUpdate(newFood)
 
                 dialog.dismiss()
 
