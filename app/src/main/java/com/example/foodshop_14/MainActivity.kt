@@ -76,8 +76,6 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
         }
 
     }
-
-
     private fun addNewFood() {
 
         val dialog = AlertDialog.Builder(this).create()
@@ -131,11 +129,16 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
         }
 
     }
-
-
     private fun removeAllData() {
         foodDao.deleteAllFoods()
         showAllData()
+    }
+    fun showAllData() {
+        val foodData = foodDao.getAllFood()
+        myAdapter = FoodAdapter(ArrayList(foodData), this)
+        binding.recyclerMain.adapter = myAdapter
+        binding.recyclerMain.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+
     }
 
 
@@ -309,13 +312,6 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
     }
 
-    fun showAllData() {
-        val foodData = foodDao.getAllFood()
-        myAdapter = FoodAdapter(ArrayList(foodData), this)
-        binding.recyclerMain.adapter = myAdapter
-        binding.recyclerMain.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-
-    }
 
     override fun onFoodClicked(food: Food, position: Int) {
 
@@ -373,7 +369,6 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
         }
     }
-
     override fun onFoodLONGClicked(food: Food, oldPosition: Int) {
 
         val dialog = AlertDialog.Builder(this).create()
