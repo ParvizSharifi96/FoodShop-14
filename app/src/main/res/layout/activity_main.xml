@@ -39,8 +39,33 @@
 
         </FrameLayout>
 
-
+        <EditText
+            android:textColor="@color/black"
+            android:id="@+id/btnSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/shape_edite"
+            android:drawableStart="@drawable/ic_search_24"
+            android:drawablePadding="8dp"
+            android:drawableTint="#6E6E6E"
+            android:hint="Search Food "
+            android:minHeight="48dp"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="8dp" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        tools:listitem="@layout/item_food" />
 
 
 </LinearLayout>
