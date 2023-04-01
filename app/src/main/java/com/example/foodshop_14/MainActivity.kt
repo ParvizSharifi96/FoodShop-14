@@ -8,10 +8,15 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodshop_14.databinding.ActivityMainBinding
+import com.example.foodshop_14.databinding.DialogAddNewItemBinding
 import com.example.foodshop_14.databinding.DialogDeleteItemBinding
 import com.example.foodshop_14.room.Food
 import com.example.foodshop_14.room.FoodDao
 import com.example.foodshop_14.room.MyDatabase
+
+
+
+const val BASE_URL_IMAGE = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food"
 
 class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
     lateinit var binding: ActivityMainBinding
@@ -37,7 +42,72 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
            removeAllData()
         }
 
+        binding.btnAddNewFood.setOnClickListener {
+
+            addNewFood()
+        }
+
     }
+
+
+    private fun addNewFood(){
+
+            val dialog = AlertDialog.Builder(this).create()
+
+           val dialogBinding = DialogAddNewItemBinding.inflate(layoutInflater)
+           dialog.setView(dialogBinding.root)
+           dialog.setCancelable(true)
+           dialog.show()
+        dialogBinding.dialogBtnDone.setOnClickListener {
+
+            if (
+                dialogBinding.dialogEdtNameFood.length() > 0 &&
+                dialogBinding.dialogEdtFoodCity.length() > 0 &&
+                dialogBinding.dialogEdtFoodPrice.length() > 0 &&
+                dialogBinding.dialogEdtFoodDistance.length() > 0
+            ) {
+
+                val txtName = dialogBinding.dialogEdtNameFood.text.toString()
+                val txtPrice = dialogBinding.dialogEdtFoodPrice.text.toString()
+                val txtDistance = dialogBinding.dialogEdtFoodDistance.text.toString()
+                val txtCity = dialogBinding.dialogEdtFoodCity.text.toString()
+                val txtRatingNumber: Int = (1..150).random()
+                val ratingBarStar: Float = (1..5).random().toFloat()
+
+                val randomForUrl = (0 until 12).random()
+                val urlpic = "$BASE_URL_IMAGE$randomForUrl.jpg"
+
+                val newFood = Food(
+                    txtSubject = txtName,
+                    txtPrice = txtPrice,
+                    txtDistance = txtDistance,
+                    txtCity = txtCity,
+                    urlImage = urlpic,
+                    numOfRating = txtRatingNumber,
+                    rating = ratingBarStar
+                )
+                myAdapter.addFood(newFood)
+                foodDao.insertFood(newFood)
+
+                dialog.dismiss()
+                binding.recyclerMain.scrollToPosition(0)
+
+
+            } else {
+
+                Toast.makeText(this, "Please enter all values", Toast.LENGTH_SHORT).show()
+
+            }
+
+
+
+
+
+    }
+
+    }
+
+
 
     private fun removeAllData() {
         foodDao.deleteAllFoods()
