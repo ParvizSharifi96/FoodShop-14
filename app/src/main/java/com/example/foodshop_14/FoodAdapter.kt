@@ -91,6 +91,14 @@ class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: Foo
 
     }
 
+    fun setData(newList:ArrayList<Food>){
+
+        data.clear()
+        data.addAll(newList)
+        notifyDataSetChanged()
+
+    }
+
     interface  FoodEvents{
 
         fun onFoodClicked(food: Food, position: Int)

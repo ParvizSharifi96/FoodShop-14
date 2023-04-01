@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodshop_14.databinding.ActivityMainBinding
@@ -244,7 +245,34 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
         }
 
 
-    }
+        binding.edtSearch.addTextChangedListener {
+            if (it!!.isNotEmpty()) {
+
+                // filter data   'h'
+                val cloneList = foodList.clone() as ArrayList<Food>
+                val filteredList = cloneList.filter { foodItem ->
+                    foodItem.txtSubject.contains( it )
+                }
+
+                myAdapter.setData(  ArrayList( filteredList )  )
+
+
+            } else {
+
+                // show all data :
+                myAdapter.setData(foodList.clone() as ArrayList<Food>)
+
+            }
+
+
+
+
+
+        }
+
+
+
+        }
 
     override fun onFoodClicked(food: Food, position: Int) {
         val dialog = AlertDialog.Builder(this).create()
