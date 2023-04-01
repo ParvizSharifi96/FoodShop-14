@@ -44,6 +44,7 @@ class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: Foo
                 .into(imgMain)
 
             itemView.setOnClickListener {
+                foodEvents.onFoodClicked(data[adapterPosition] , adapterPosition)
 
             }
             itemView.setOnLongClickListener {
@@ -79,6 +80,14 @@ class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: Foo
     fun removeFood(oldFood: Food, oldPosition: Int){
         data.remove(oldFood)
         notifyItemRemoved(oldPosition)
+
+    }
+
+    fun updateFood(newFood: Food, position: Int){
+
+        data.set(position , newFood)
+        notifyItemChanged(position)
+
 
     }
 

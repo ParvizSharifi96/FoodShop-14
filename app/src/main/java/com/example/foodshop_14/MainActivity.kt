@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodshop_14.databinding.ActivityMainBinding
 import com.example.foodshop_14.databinding.DialogAddNewItemBinding
 import com.example.foodshop_14.databinding.DialogDeleteItemBinding
+import com.example.foodshop_14.databinding.DialogUpdateItemBinding
 
 class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
     lateinit var binding: ActivityMainBinding
@@ -246,6 +247,56 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
     }
 
     override fun onFoodClicked(food: Food, position: Int) {
+        val dialog = AlertDialog.Builder(this).create()
+        val updateDialogBinding = DialogUpdateItemBinding.inflate(layoutInflater)
+        dialog.setView(updateDialogBinding.root)
+        dialog.setCancelable(true)
+        dialog.show()
+
+        updateDialogBinding.dialogEdtNameFood.setText(food.txtSubject)
+        updateDialogBinding.dialogEdtFoodCity.setText(food.txtCity)
+        updateDialogBinding.dialogEdtFoodPrice.setText(food.txtPrice)
+        updateDialogBinding.dialogEdtFoodDistance.setText(food.txtDistance)
+
+        updateDialogBinding.dialogUpdateBtnCancel.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        updateDialogBinding.dialogUpdateBtnDone.setOnClickListener {
+
+            if (
+                updateDialogBinding.dialogEdtNameFood.length() > 0 &&
+                updateDialogBinding.dialogEdtFoodCity.length() > 0 &&
+                updateDialogBinding.dialogEdtFoodPrice.length() > 0 &&
+                updateDialogBinding.dialogEdtFoodDistance.length() > 0
+            ) {
+
+                val txtName = updateDialogBinding.dialogEdtNameFood.text.toString()
+                val txtPrice = updateDialogBinding.dialogEdtFoodPrice.text.toString()
+                val txtDistance = updateDialogBinding.dialogEdtFoodDistance.text.toString()
+                val txtCity = updateDialogBinding.dialogEdtFoodCity.text.toString()
+
+                // create new food to add to recycler view
+                val newFood = Food(
+                    txtName,
+                    txtPrice,
+                    txtDistance,
+                    txtCity,
+                    food.urlImage,
+                    food.numOfRating,
+                    food.rating
+                )
+
+                // update item :
+                myAdapter.updateFood(newFood, position)
+
+                dialog.dismiss()
+
+            } else {
+                Toast.makeText(this, "لطفا همه مقادیر را وارد کن :)", Toast.LENGTH_SHORT).show()
+            }
+
+        }
 
     }
 
