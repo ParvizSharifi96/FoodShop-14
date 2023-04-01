@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -50,6 +51,11 @@ dependencies {
 
     // transformations
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
+
+    //room
+
+    implementation "androidx.room:room-runtime:2.5.1"
+    kapt  "androidx.room:room-compiler:2.5.1"
 
 
 }

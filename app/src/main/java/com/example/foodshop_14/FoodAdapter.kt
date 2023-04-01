@@ -46,16 +46,15 @@ class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: Foo
 
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val binding = ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent , false)
         return FoodViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         holder.bindData(position)
 
     }
-
     override fun getItemCount(): Int {
         return data.size
     }
@@ -67,13 +66,11 @@ class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: Foo
         data.add(0, newFood)
         notifyItemInserted(0)
     }
-
     fun removeFood(oldFood: Food, oldPosition: Int){
         data.remove(oldFood)
         notifyItemRemoved(oldPosition)
 
     }
-
     fun updateFood(newFood: Food, position: Int){
 
         data.set(position , newFood)
@@ -81,7 +78,6 @@ class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: Foo
 
 
     }
-
     fun setData(newList:ArrayList<Food>){
 
         data.clear()
