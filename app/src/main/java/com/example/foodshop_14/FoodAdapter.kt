@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class FoodAdapter(private val data: ArrayList<Food>) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private val data: ArrayList<Food> ) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     inner class FoodViewHolder(itemView: View, private val context: Context) :
         RecyclerView.ViewHolder(itemView) {
