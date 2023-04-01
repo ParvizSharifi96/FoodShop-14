@@ -33,10 +33,17 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
         }
 
         showAllData()
-
-
+        binding.btnRemoveAllFood.setOnClickListener {
+           removeAllData()
+        }
 
     }
+
+    private fun removeAllData() {
+        foodDao.deleteAllFoods()
+        showAllData()
+    }
+
 
     private fun firstRun() {
 
