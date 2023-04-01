@@ -2,9 +2,12 @@ package com.example.foodshop_14
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodshop_14.databinding.ActivityMainBinding
+import com.example.foodshop_14.databinding.DialogAddNewItemBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -39,6 +42,51 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerMain.adapter = myAdapter
         binding.recyclerMain.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL,false)
 
+        binding.btnAddNewFood.setOnClickListener {
+
+            val dialog = AlertDialog.Builder(this).create()
+
+            val dialogBinding = DialogAddNewItemBinding.inflate(layoutInflater)
+            dialog.setView(dialogBinding.root)
+            dialog.setCancelable(true)
+            dialog.show()
+
+            dialogBinding.dialogBtnDone.setOnClickListener {
+
+                if (
+                    dialogBinding.dialogEdtNameFood.length() > 0 &&
+                    dialogBinding.dialogEdtFoodCity.length() > 0 &&
+                    dialogBinding.dialogEdtFoodPrice.length() > 0 &&
+                    dialogBinding.dialogEdtFoodDistance.length() > 0
+                ) {
+
+                    val txtName = dialogBinding.dialogEdtNameFood.text.toString()
+                    val txtPrice = dialogBinding.dialogEdtFoodPrice.text.toString()
+                    val txtDistance = dialogBinding.dialogEdtFoodDistance.text.toString()
+                    val txtCity = dialogBinding.dialogEdtFoodCity.text.toString()
+                    val txtRatingNumber :Int = (1..150).random()
+                    val ratingBarStar :Float = (1..5).random().toFloat()
+
+                    val randomForUrl = (0 until 12).random()
+                    val urlPic = foodList[randomForUrl].urlImage
+
+                    val newFood = Food(txtName , txtPrice , txtDistance , txtCity , urlPic , txtRatingNumber , ratingBarStar)
+                    myAdapter.addFood(newFood)
+
+                    dialog.dismiss()
+                    binding.recyclerMain.scrollToPosition(0)
+
+
+                } else {
+
+                    Toast.makeText(this, "Please enter all values", Toast.LENGTH_SHORT).show()
+
+                }
+
+            }
+
+
+        }
 
 
     }

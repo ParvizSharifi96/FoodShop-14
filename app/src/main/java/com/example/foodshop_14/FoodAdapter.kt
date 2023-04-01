@@ -61,4 +61,10 @@ class FoodAdapter(private val data: ArrayList<Food> ) : RecyclerView.Adapter<Foo
         return data.size
     }
 
+    fun addFood (newFood: Food){
+        data.add(0, newFood)
+        notifyItemInserted(0)
+    }
+
+
 }
