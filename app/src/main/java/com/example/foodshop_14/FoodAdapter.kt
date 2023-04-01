@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
-class FoodAdapter(private val data: ArrayList<Food> ) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
+class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: FoodEvents ) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
 
     inner class FoodViewHolder(itemView: View, private val context: Context) :
         RecyclerView.ViewHolder(itemView) {
@@ -43,6 +43,16 @@ class FoodAdapter(private val data: ArrayList<Food> ) : RecyclerView.Adapter<Foo
                 .transform(RoundedCornersTransformation(16, 4))
                 .into(imgMain)
 
+            itemView.setOnClickListener {
+
+            }
+            itemView.setOnLongClickListener {
+
+                foodEvents.onFoodLONGClicked(data[adapterPosition] , adapterPosition)
+                true
+
+            }
+
         }
 
     }
@@ -66,5 +76,17 @@ class FoodAdapter(private val data: ArrayList<Food> ) : RecyclerView.Adapter<Foo
         notifyItemInserted(0)
     }
 
+    fun removeFood(oldFood: Food, oldPosition: Int){
+        data.remove(oldFood)
+        notifyItemRemoved(oldPosition)
+
+    }
+
+    interface  FoodEvents{
+
+        fun onFoodClicked(food: Food, position: Int)
+        fun  onFoodLONGClicked(food: Food, oldPosition: Int)
+
+    }
 
 }
