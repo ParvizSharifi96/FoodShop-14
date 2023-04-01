@@ -24,166 +24,166 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
         val foodList = arrayListOf(
             Food(
-                "Hamburger",
-                "15",
-                "3",
-                "Isfahan, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food1.jpg",
-                20,
-                4.5f
+              txtSubject =   "Hamburger",
+              txtPrice =     "15",
+              txtDistance =  "3",
+              txtCity =      "Isfahan, Iran",
+              urlImage =     "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food1.jpg",
+              numOfRating =  20,
+              rating =       4.5f
             ),
             Food(
-                "Grilled fish",
-                "20",
-                "2.1",
-                "Tehran, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food2.jpg",
-                10,
-                4f
+              txtSubject =   "Grilled fish",
+              txtPrice =     "20",
+              txtDistance =  "2.1",
+              txtCity =      "Tehran, Iran",
+              urlImage =     "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food2.jpg",
+              numOfRating =  10,
+              rating =       4f
             ),
             Food(
-                "Lasania",
-                "40",
-                "1.4",
-                "Isfahan, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food3.jpg",
-                30,
-                2f
+                txtSubject = "Lasania",
+                txtPrice = "40",
+                txtDistance = "1.4",
+                txtCity = "Isfahan, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food3.jpg",
+                numOfRating = 30,
+                rating = 2f
             ),
             Food(
-                "pizza",
-                "10",
-                "2.5",
-                "Zahedan, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food4.jpg",
-                80,
-                1.5f
+                txtSubject = "pizza",
+                txtPrice = "10",
+                txtDistance = "2.5",
+                txtCity = "Zahedan, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food4.jpg",
+                numOfRating = 80,
+                rating = 1.5f
             ),
             Food(
-                "Sushi",
-                "20",
-                "3.2",
-                "Mashhad, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food5.jpg",
-                200,
-                3f
+                txtSubject = "Sushi",
+                txtPrice = "20",
+                txtDistance = "3.2",
+                txtCity = "Mashhad, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food5.jpg",
+                numOfRating = 200,
+                rating = 3f
             ),
             Food(
-                "Roasted Fish",
-                "40",
-                "3.7",
-                "Jolfa, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food6.jpg",
-                50,
-                3.5f
+                txtSubject = "Roasted Fish",
+                txtPrice = "40",
+                txtDistance = "3.7",
+                txtCity = "Jolfa, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food6.jpg",
+                numOfRating = 50,
+                rating = 3.5f
             ),
             Food(
-                "Fried chicken",
-                "70",
-                "3.5",
-                "NewYork, USA",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food7.jpg",
-                70,
-                2.5f
+                txtSubject = "Fried chicken",
+                txtPrice = "70",
+                txtDistance = "3.5",
+                txtCity = "NewYork, USA",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food7.jpg",
+                numOfRating = 70,
+                rating = 2.5f
             ),
             Food(
-                "Vegetable salad",
-                "12",
-                "3.6",
-                "Berlin, Germany",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food8.jpg",
-                40,
-                4.5f
+                txtSubject = "Vegetable salad",
+                txtPrice = "12",
+                txtDistance = "3.6",
+                txtCity = "Berlin, Germany",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food8.jpg",
+                numOfRating = 40,
+                rating = 4.5f
             ),
             Food(
-                "Grilled chicken",
-                "10",
-                "3.7",
-                "Beijing, China",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food9.jpg",
-                15,
-                5f
+                txtSubject = "Grilled chicken",
+                txtPrice = "10",
+                txtDistance = "3.7",
+                txtCity = "Beijing, China",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food9.jpg",
+                numOfRating = 15,
+                rating = 5f
             ),
             Food(
-                "Baryooni",
-                "16",
-                "10",
-                "Ilam, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food10.jpg",
-                28,
-                4.5f
+                txtSubject = "Baryooni",
+                txtPrice = "16",
+                txtDistance = "10",
+                txtCity = "Ilam, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food10.jpg",
+                numOfRating = 28,
+                rating = 4.5f
             ),
             Food(
-                "Ghorme Sabzi",
-                "11.5",
-                "7.5",
-                "Karaj, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food11.jpg",
-                27,
-                5f
+                txtSubject = "Ghorme Sabzi",
+                txtPrice = "11.5",
+                txtDistance = "7.5",
+                txtCity = "Karaj, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food11.jpg",
+                numOfRating = 27,
+                rating = 5f
             ),
             Food(
-                "Rice",
-                "12.5",
-                "2.4",
-                "Shiraz, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food12.jpg",
-                35,
-                2.5f
+                txtSubject = "Rice",
+                txtPrice = "12.5",
+                txtDistance = "2.4",
+                txtCity = "Shiraz, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food12.jpg",
+                numOfRating = 35,
+                rating = 2.5f
             ),
             Food(
-                "pizza",
-                "10",
-                "2.5",
-                "Zahedan, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food4.jpg",
-                80,
-                1.5f
+                txtSubject = "pizza",
+                txtPrice = "10",
+                txtDistance = "2.5",
+                txtCity = "Zahedan, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food4.jpg",
+                numOfRating = 80,
+                rating = 1.5f
             ),
             Food(
-                "Sushi",
-                "20",
-                "3.2",
-                "Mashhad, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food5.jpg",
-                200,
-                3f
+                txtSubject = "Sushi",
+                txtPrice = "20",
+                txtDistance = "3.2",
+                txtCity = "Mashhad, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food5.jpg",
+                numOfRating = 200,
+                rating = 3f
             ),
             Food(
-                "Roasted Fish",
-                "40",
-                "3.7",
-                "Jolfa, Iran",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food6.jpg",
-                50,
-                3.5f
+                txtSubject = "Roasted Fish",
+                txtPrice = "40",
+                txtDistance = "3.7",
+                txtCity = "Jolfa, Iran",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food6.jpg",
+                numOfRating = 50,
+                rating = 3.5f
             ),
             Food(
-                "Fried chicken",
-                "70",
-                "3.5",
-                "NewYork, USA",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food7.jpg",
-                70,
-                2.5f
+                txtSubject = "Fried chicken",
+                txtPrice = "70",
+                txtDistance = "3.5",
+                txtCity = "NewYork, USA",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food7.jpg",
+                numOfRating = 70,
+                rating = 2.5f
             ),
             Food(
-                "Vegetable salad",
-                "12",
-                "3.6",
-                "Berlin, Germany",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food8.jpg",
-                40,
-                4.5f
+                txtSubject = "Vegetable salad",
+                txtPrice = "12",
+                txtDistance = "3.6",
+                txtCity = "Berlin, Germany",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food8.jpg",
+                numOfRating = 40,
+                rating = 4.5f
             ),
             Food(
-                "Grilled chicken",
-                "10",
-                "3.7",
-                "Beijing, China",
-                "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food9.jpg",
-                15,
-                5f
+                txtSubject = "Grilled chicken",
+                txtPrice = "10",
+                txtDistance = "3.7",
+                txtCity = "Beijing, China",
+                urlImage = "https://dunijet.ir/YaghootAndroidFiles/DuniFoodSimple/food9.jpg",
+                numOfRating = 15,
+                rating = 5f
             ),
         )
         myAdapter = FoodAdapter(foodList.clone() as ArrayList<Food>, this)
@@ -219,13 +219,13 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                     val urlPic = foodList[randomForUrl].urlImage
 
                     val newFood = Food(
-                        txtName,
-                        txtPrice,
-                        txtDistance,
-                        txtCity,
-                        urlPic,
-                        txtRatingNumber,
-                        ratingBarStar
+                     txtSubject =    txtName,
+                     txtPrice =      txtPrice,
+                     txtDistance =   txtDistance,
+                     txtCity =       txtCity,
+                     urlImage =      urlPic,
+                     numOfRating =   txtRatingNumber,
+                     rating =        ratingBarStar
                     )
                     myAdapter.addFood(newFood)
 
@@ -251,10 +251,10 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                 // filter data   'h'
                 val cloneList = foodList.clone() as ArrayList<Food>
                 val filteredList = cloneList.filter { foodItem ->
-                    foodItem.txtSubject.contains( it )
+                    foodItem.txtSubject.contains(it)
                 }
 
-                myAdapter.setData(  ArrayList( filteredList )  )
+                myAdapter.setData(ArrayList(filteredList))
 
 
             } else {
@@ -265,14 +265,10 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
             }
 
 
-
-
-
         }
 
 
-
-        }
+    }
 
     override fun onFoodClicked(food: Food, position: Int) {
         val dialog = AlertDialog.Builder(this).create()
@@ -306,13 +302,13 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
                 // create new food to add to recycler view
                 val newFood = Food(
-                    txtName,
-                    txtPrice,
-                    txtDistance,
-                    txtCity,
-                    food.urlImage,
-                    food.numOfRating,
-                    food.rating
+                  txtSubject =   txtName,
+                  txtPrice =     txtPrice,
+                  txtDistance =  txtDistance,
+                  txtCity =      txtCity,
+                  urlImage =     food.urlImage,
+                  numOfRating =  food.numOfRating,
+                  rating =       food.rating
                 )
 
                 // update item :
@@ -321,7 +317,7 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
                 dialog.dismiss()
 
             } else {
-                Toast.makeText(this, "لطفا همه مقادیر را وارد کن :)", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter all values", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -343,7 +339,6 @@ class MainActivity : AppCompatActivity(), FoodAdapter.FoodEvents {
 
             dialog.dismiss()
             myAdapter.removeFood(food, oldPosition)
-
 
 
         }
