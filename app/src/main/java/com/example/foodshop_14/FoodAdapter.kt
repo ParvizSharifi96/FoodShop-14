@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.foodshop_14.databinding.ItemFoodBinding
+import com.example.foodshop_14.room.Food
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation
 
 class FoodAdapter(private val data: ArrayList<Food>, private val foodEvents: FoodEvents ) : RecyclerView.Adapter<FoodAdapter.FoodViewHolder>() {
